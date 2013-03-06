@@ -3,29 +3,18 @@ Ext.define( 'MyApp.controller.NoteableController', {
 
 	refs: [ {  ref: 'mainForm', selector: 'form' } ],
 
-	init: function ( application ) {
-		Ext.getStore( 'TopicStore' ).load();
-		this.control( {
-			"tool[type=plus]": { click: this.onPlusToolClick },
-			"tool[type=minus]": { click: this.onMinusToolClick },
-			"tool[type=save]": { click: this.onSaveToolClick },
-			"textarea": { change: this.onTextareaChange },
-			"gridpanel": { select: this.onGridpanelSelect }
-		} );
-	},
-
 	// The use of "fetch" is to avoid future name collisions with methods Ext JS generates
 	fetchBasicForm: function () {return this.getMainForm().getForm(); },
 
 	fetchCurrentRecord: function () {return this.fetchBasicForm().getRecord()},
 
 	onPlusToolClick: function ( tool, e, options ) {
+		console.log('onPlusToolClick+', tool.type);
 		var string = prompt( 'Topic Name?' );
 		if ( string ) {
 			var record = Ext.create( 'MyApp.model.TopicRecord', {topic: string, content: ''} );
 			Ext.getStore( 'TopicStore' ).add( record );
 			this.fetchBasicForm().loadRecord( record );
-
 			Ext.ComponentQuery.query( 'grid' )[0].selModel.select( record );
 		}
 	},
@@ -38,11 +27,22 @@ Ext.define( 'MyApp.controller.NoteableController', {
 		Ext.getStore( 'TopicStore' ).sync();
 	},
 
+	onGridpanelSelect: function ( selModel, record, index, options ) {
+		this.fetchBasicForm().loadRecord( record );
+	}, 
+	
 	onTextareaChange: function ( field, newValue, oldValue, options ) {
 		this.fetchBasicForm().updateRecord( this.fetchCurrentRecord() );
 	},
-
-	onGridpanelSelect: function ( selModel, record, index, options ) {
-		this.fetchBasicForm().loadRecord( record );
-	}
+	
+	init: function ( application ) {
+		Ext.getStore( 'TopicStore' ).load();
+		this.control( {
+			"tool[type=plus]": { click: this.onPlusToolClick },
+			"tool[type=minus]": { click: this.onMinusToolClick },
+			"tool[type=save]": { click: this.onSaveToolClick },
+			"textarea": { change: this.onTextareaChange },
+			"gridpanel": { select: this.onGridpanelSelect }
+		} );
+	},
 } );
