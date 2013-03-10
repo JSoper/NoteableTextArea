@@ -2,7 +2,7 @@ Ext.define('MyApp.controller.NoteableController', {
 	extend : 'Ext.app.Controller',
 
 	refs : [ {
-		ref : 'mainForm',
+		ref : 'mainForm'
 		selector : 'form'
 	} ],
 
