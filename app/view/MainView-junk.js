@@ -8,24 +8,24 @@ Ext.define('MyApp.view.MainView', {
 
 	initComponent: function() {
 		Ext.applyIf(this, {
-			items: [{
+			items: [ {
 				xtype: 'gridpanel',
 				region: 'west',
 				flex: 1,
 				title: 'Noteable',
 				store: 'TopicStore',
-				plugins: [Ext.create('Ext.grid.plugin.CellEditing', {
+				plugins: [ Ext.create('Ext.grid.plugin.CellEditing', {
 					clicksToEdit: 2
-				})],
-				columns: [{
+				}) ],
+				columns: [ {
 					xtype: 'gridcolumn',
 					dataIndex: 'topic',
 					flex: 1,
 					hideable: false,
 					text: 'Topics',
 					editor: 'textfield'
-				}],
-				tools: [{
+				} ],
+				tools: [ {
 					xtype: 'tool',
 					type: 'plus'
 				}, {
@@ -34,18 +34,18 @@ Ext.define('MyApp.view.MainView', {
 				}, {
 					xtype: 'tool',
 					type: 'save'
-				}]
+				} ]
 			}, {
 				xtype: 'form',
 				region: 'center',
 				title: 'Content',
 				flex: 4,
 				layout: 'fit',
-				items: [{
+				items: [ {
 					xtype: 'textarea', // 'htmleditor',
 					name: 'content'
-				}]
-			}]
+				} ]
+			} ]
 		});
 		this.callParent(arguments);
 	}

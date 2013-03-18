@@ -1,12 +1,11 @@
 Ext.Loader.setConfig({
-	enabled : true
+	enabled: true
 });
 
 Ext.application({
-	models : [ 'TopicRecord' ],
-	stores : [ 'TopicStore' ],
-	views : [ 'MainView' ],
-	autoCreateViewport : true,
-	name : 'MyApp',
-	controllers : [ 'NoteableController' ]
+	// models: [ 'TopicRecord' ],
+	// stores: [ 'TopicStore' ],
+	autoCreateViewport: true,
+	name: 'MyApp',
+	controllers: [ 'NoteableController' ]
 });
