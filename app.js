@@ -4,7 +4,7 @@ Ext.Loader.setConfig({
 
 Ext.application({
 	// models: [ 'TopicRecord' ],
-	// stores: [ 'TopicStore' ],
+	stores: [ 'TopicStore' ],
 	autoCreateViewport: true,
 	name: 'MyApp',
 	controllers: [ 'NoteableController' ]

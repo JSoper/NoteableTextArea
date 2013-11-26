@@ -1,8 +1,6 @@
 Ext.define('MyApp.controller.NoteableController', {
 	extend: 'Ext.app.Controller',
 
-	models: [ 'TopicRecord' ],
-	stores: [ 'TopicStore' ],
 	refs: [ {
 		ref: 'mainForm',
 		selector: 'form'
@@ -48,24 +46,6 @@ Ext.define('MyApp.controller.NoteableController', {
 		this.fetchBasicForm().updateRecord(this.fetchCurrentRecord());
 	},
 
-	// onHtmleditorChange : function(field, newValue, oldValue, options) {
-	// console.log('changeHtml', 'newValue=' + newValue, 'oldValue=' +
-	// oldValue);
-	// var basicForm = this.fetchBasicForm()
-	// var record = fetchCurrentRecord(), //basicForm.getRecord();
-
-	// // console.log('changeHtml b4 record.set() topic=',
-	// // record.get('topic'));
-	// console.log('changeHtml b4 record.set() content=',
-	// record.get('content'));
-	// basicForm.updateRecord(record);
-	// // record.set(field.name, newValue);
-	// // console.log('changeHtml aftr record.set() topic=',
-	// // record.get('topic'));
-	// console.log('changeHtml aftr record.set() content=',
-	// record.get('content'));
-	// },
-
 	init: function(application) {
 		Ext.getStore('TopicStore').load();
 		this.control({
@@ -90,3 +70,21 @@ Ext.define('MyApp.controller.NoteableController', {
 		});
 	},
 });
+
+// onHtmleditorChange : function(field, newValue, oldValue, options) {
+// console.log('changeHtml', 'newValue=' + newValue, 'oldValue=' +
+// oldValue);
+// var basicForm = this.fetchBasicForm()
+// var record = fetchCurrentRecord(), //basicForm.getRecord();
+
+// // console.log('changeHtml b4 record.set() topic=',
+// // record.get('topic'));
+// console.log('changeHtml b4 record.set() content=',
+// record.get('content'));
+// basicForm.updateRecord(record);
+// // record.set(field.name, newValue);
+// // console.log('changeHtml aftr record.set() topic=',
+// // record.get('topic'));
+// console.log('changeHtml aftr record.set() content=',
+// record.get('content'));
+// },
